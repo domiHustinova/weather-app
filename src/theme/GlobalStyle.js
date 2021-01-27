@@ -21,7 +21,7 @@ body {
   font-weight: 600;
   margin: 0;
   padding: 1em;
-  background: url(${require(`./assets/background.jpg`)}) center no-repeat;
+  background: url(${require(`../assets/background.jpg`)}) center no-repeat;
   background-size: cover;
 }
 

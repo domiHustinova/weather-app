@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu } from "./components/Menu";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "./theme/GlobalStyle";
 
 function App() {
   return (
