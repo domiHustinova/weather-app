@@ -1,12 +1,14 @@
-import React from 'react';
-import './App.css';
-import {Menu} from "./components/Menu";
+import React from "react";
+import { Menu } from "./components/Menu";
+import GlobalStyle from "./GlobalStyle";
+
 function App() {
-    return (
-        <div>
-            <h1>Počasí</h1>
-            <Menu/>
-        </div>
-    )
+  return (
+    <div>
+      <GlobalStyle />
+      <h1>Počasí</h1>
+      <Menu />
+    </div>
+  );
 }
 export default App;
