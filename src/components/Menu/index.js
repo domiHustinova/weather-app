@@ -1,8 +1,20 @@
 import React from "react";
+import styled from "styled-components";
+
 import { Weather } from "../Weather";
 import Forecast from "../Forecast";
 import getWeatherIcon from "../../services/helpers";
 import { API_URL, API_KEY, CITIES } from "../../services/consts";
+import "./index.scss";
+
+const StyledDisplayCard = styled.div`
+  margin: 10px auto 30px auto;
+  width: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+`;
 
 export class Menu extends React.Component {
   constructor(props) {
@@ -112,12 +124,12 @@ export class Menu extends React.Component {
           ))}
         </div>
         {weatherData?.temp && (
-          <div className="weather">
+          <StyledDisplayCard>
             <Weather weatherData={weatherData} />
             {Array.isArray(forecastData) && forecastData.length && (
               <Forecast forecastData={forecastData} />
             )}
-          </div>
+          </StyledDisplayCard>
         )}
       </div>
     );

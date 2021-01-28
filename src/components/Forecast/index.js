@@ -37,7 +37,7 @@ const ForecastTemp = styled.div`
 
 const Forecast = ({ forecastData }) => {
   return (
-    <ForecastWrapper>
+    <ForecastWrapper id="forecast">
       {forecastData.map((dayData) => (
         <ForecastDayWrapper>
           <ForecastDate>
