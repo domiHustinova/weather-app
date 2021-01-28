@@ -29,7 +29,7 @@ h1 {
   margin-bottom: 30px;
   font-size: 48px;
   text-align: center;
-  color: #fff;
+  color: ${({ theme }) => theme.text};
 }
 `;
 

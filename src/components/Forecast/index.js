@@ -3,18 +3,18 @@ import styled from "styled-components";
 import { WEEK_DAYS } from "../../services/consts";
 
 const ForecastWrapper = styled.div`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.backgroundForecast};
 `;
 
 const ForecastDayWrapper = styled.div`
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid ${({ theme }) => theme.borderForecast};
   padding: 15px 30px;
   display: flex;
   align-items: center;
-  color: #666;
+  color: ${({ theme }) => theme.textForecast};
 
   &:hover {
-    background-color: #fff3d9;
+    background-color: ${({ theme }) => theme.backgroundForecastHover};
   }
 `;
 
@@ -27,7 +27,7 @@ const ForecastIcon = styled.div`
   flex: 0 0 30px;
   font-size: 20px;
   text-align: center;
-  color: #ff3e78;
+  color: ${({ theme }) => theme.iconForecast};
 `;
 
 const ForecastTemp = styled.div`

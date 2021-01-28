@@ -5,8 +5,9 @@ import "./css/weather-icons.min.css";
 
 const StyledWeatherWrapper = styled.div`
   padding: 20px;
-  background: #ff3e78 linear-gradient(to bottom, #ff3e78, #ffbd2e);
-  color: #fff;
+  background: ${({ theme }) => theme.backgroundWeather}
+    ${({ theme }) => theme.backgroundWeatherGradient};
+  color: ${({ theme }) => theme.textWeather};
 `;
 
 const StyledWeatherCityTitle = styled.h2`

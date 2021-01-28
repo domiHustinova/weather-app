@@ -12,8 +12,8 @@ const StyledDisplayCard = styled.div`
   width: 350px;
   overflow: hidden;
   border-radius: 10px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+  border: 5px solid ${({ theme }) => theme.weatherCardBorder};
+  box-shadow: 0 3px 15px r ${({ theme }) => theme.weatherCardShadow};
 `;
 
 class WeatherCard extends React.Component {

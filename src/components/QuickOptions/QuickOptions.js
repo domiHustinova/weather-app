@@ -7,8 +7,8 @@ const QuickOptionsWrapper = styled.div`
   margin: 10px auto;
   display: flex;
   border-radius: 10px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+  border: 5px solid ${({ theme }) => theme.quickOptionsBorder};
+  box-shadow: 0 3px 15px ${({ theme }) => theme.quickOptionsShadow};
 `;
 
 const QuickOptionsButton = styled.button`
@@ -17,8 +17,9 @@ const QuickOptionsButton = styled.button`
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  background: #ff3e78 linear-gradient(to top, #ff3e78, #777bf0);
-  color: #fff;
+  background: ${({ theme }) => theme.buttonBackground}
+    ${({ theme }) => theme.buttonBackgroundGradientLight};
+  color: ${({ theme }) => theme.buttonText};
   border: 0;
   outline: 0;
   cursor: pointer;
@@ -26,7 +27,8 @@ const QuickOptionsButton = styled.button`
   &:hover,
   &:focus,
   &:active {
-    background: #ff3e78 linear-gradient(to top, #ff3e78, #453df8);
+    background: ${({ theme }) => theme.buttonBackground}
+      ${({ theme }) => theme.buttonBackgroundGradientDark};
   }
 
   &:first-child {
@@ -34,7 +36,7 @@ const QuickOptionsButton = styled.button`
   }
 
   &:not(:first-child) {
-    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    border-left: 1px solid ${({ theme }) => theme.buttonBorder};
   }
 
   &:last-child {

@@ -1,14 +1,18 @@
 import React from "react";
-import WeatherCard from "./components/WeatherCard";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "./theme/consts";
 import GlobalStyle from "./theme/GlobalStyle";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   return (
-    <div>
-      <GlobalStyle />
-      <h1>Počasí</h1>
-      <WeatherCard />
-    </div>
+    <ThemeProvider theme={lightTheme}>
+      <>
+        <GlobalStyle />
+        <h1>Počasí</h1>
+        <WeatherCard />
+      </>
+    </ThemeProvider>
   );
 }
 export default App;
