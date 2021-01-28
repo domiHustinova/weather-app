@@ -2,15 +2,7 @@ import React from "react";
 import { Weather } from "../Weather";
 import Forecast from "../Forecast";
 import getWeatherIcon from "../../services/helpers";
-
-const apiKey = "b873b3cd2a6fe46f2345df4722c65732";
-const apiUrl = "https://api.openweathermap.org/data/2.5/";
-const CITIES = [
-  { name: "Brno", code: "cz" },
-  { name: "Prague", code: "cz" },
-  { name: "Barcelona", code: "es" },
-  { name: "Bratislava", code: "sk" },
-];
+import { API_URL, API_KEY, CITIES } from "../../services/consts";
 
 export class Menu extends React.Component {
   constructor(props) {
@@ -33,7 +25,7 @@ export class Menu extends React.Component {
 
   fetchWeather(city) {
     let query = fetch(
-      `${apiUrl}weather?APPID=${apiKey}&q=${city.name},${city.code}&units=metric&lang=CZ`
+      `${API_URL}weather?APPID=${API_KEY}&q=${city.name},${city.code}&units=metric&lang=CZ`
     );
 
     query
@@ -55,7 +47,7 @@ export class Menu extends React.Component {
 
   fetchForecast(city) {
     let query = fetch(
-      `${apiUrl}forecast?APPID=${apiKey}&q=${city.name},${city.code}&units=metric&lang=CZ`
+      `${API_URL}forecast?APPID=${API_KEY}&q=${city.name},${city.code}&units=metric&lang=CZ`
     );
     query
       .then((response) => response.json())
