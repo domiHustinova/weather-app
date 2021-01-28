@@ -1,16 +1,8 @@
 import React from "react";
 import { Weather } from "../Weather";
+import Forecast from "../Forecast";
 import getWeatherIcon from "../../services/helpers";
 
-const arrayDays = [
-  "Neděle",
-  "Pondelí",
-  "Úterý",
-  "Středa",
-  "Čtvrtek",
-  "Pátek",
-  "Sobota",
-];
 const apiKey = "b873b3cd2a6fe46f2345df4722c65732";
 const apiUrl = "https://api.openweathermap.org/data/2.5/";
 const CITIES = [
@@ -132,22 +124,7 @@ export class Menu extends React.Component {
             <Weather weatherData={weatherData} />
             {Array.isArray(forecastData) &&
               forecastData.length &&
-              forecastData.map((day) => (
-                <div className="weather__forecast">
-                  <div className="forecast">
-                    <div className="forecast__day">
-                      {arrayDays[day.date.weekDay]} {day.date.day}.
-                      {day.date.month}.
-                    </div>
-                    <div className="forecast__icon">
-                      <i className={day.icon}></i>
-                    </div>
-                    <div className="forecast__temp">
-                      {Math.round(day.temp)} °C
-                    </div>
-                  </div>
-                </div>
-              ))}
+              forecastData.map((day) => <Forecast day={day} />)}
           </div>
         )}
       </div>
