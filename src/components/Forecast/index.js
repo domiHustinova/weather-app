@@ -4,6 +4,9 @@ import { WEEK_DAYS } from "../../services/consts";
 
 const ForecastWrapper = styled.div`
   background-color: #fff;
+`;
+
+const ForecastDayWrapper = styled.div`
   border-top: 1px solid #e5e5e5;
   padding: 15px 30px;
   display: flex;
@@ -15,7 +18,7 @@ const ForecastWrapper = styled.div`
   }
 `;
 
-const ForecastDay = styled.div`
+const ForecastDate = styled.div`
   flex: 1;
   font-size: 14px;
 `;
@@ -32,16 +35,21 @@ const ForecastTemp = styled.div`
   text-align: right;
 `;
 
-const Forecast = ({ day }) => {
+const Forecast = ({ forecastData }) => {
   return (
     <ForecastWrapper>
-      <ForecastDay>
-        {WEEK_DAYS[day.date.weekDay]} {day.date.day}.{day.date.month}.
-      </ForecastDay>
-      <ForecastIcon>
-        <i className={day.icon}></i>
-      </ForecastIcon>
-      <ForecastTemp>{Math.round(day.temp)} °C</ForecastTemp>
+      {forecastData.map((dayData) => (
+        <ForecastDayWrapper>
+          <ForecastDate>
+            {WEEK_DAYS[dayData.date.weekDay]} {dayData.date.day}.
+            {dayData.date.month}.
+          </ForecastDate>
+          <ForecastIcon>
+            <i className={dayData.icon}></i>
+          </ForecastIcon>
+          <ForecastTemp>{Math.round(dayData.temp)} °C</ForecastTemp>
+        </ForecastDayWrapper>
+      ))}
     </ForecastWrapper>
   );
 };

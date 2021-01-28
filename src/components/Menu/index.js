@@ -114,9 +114,9 @@ export class Menu extends React.Component {
         {weatherData?.temp && (
           <div className="weather">
             <Weather weatherData={weatherData} />
-            {Array.isArray(forecastData) &&
-              forecastData.length &&
-              forecastData.map((day) => <Forecast day={day} />)}
+            {Array.isArray(forecastData) && forecastData.length && (
+              <Forecast forecastData={forecastData} />
+            )}
           </div>
         )}
       </div>
