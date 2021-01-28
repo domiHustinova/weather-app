@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu } from "./components/Menu";
+import WeatherCard from "./components/WeatherCard";
 import GlobalStyle from "./theme/GlobalStyle";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div>
       <GlobalStyle />
       <h1>Počasí</h1>
-      <Menu />
+      <WeatherCard />
     </div>
   );
 }

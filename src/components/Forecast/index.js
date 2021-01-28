@@ -35,23 +35,21 @@ const ForecastTemp = styled.div`
   text-align: right;
 `;
 
-const Forecast = ({ forecastData }) => {
-  return (
-    <ForecastWrapper id="forecast">
-      {forecastData.map((dayData) => (
-        <ForecastDayWrapper>
-          <ForecastDate>
-            {WEEK_DAYS[dayData.date.weekDay]} {dayData.date.day}.
-            {dayData.date.month}.
-          </ForecastDate>
-          <ForecastIcon>
-            <i className={dayData.icon}></i>
-          </ForecastIcon>
-          <ForecastTemp>{Math.round(dayData.temp)} °C</ForecastTemp>
-        </ForecastDayWrapper>
-      ))}
-    </ForecastWrapper>
-  );
-};
+const Forecast = ({ forecastData }) => (
+  <ForecastWrapper id="forecast">
+    {forecastData.map((dayData) => (
+      <ForecastDayWrapper>
+        <ForecastDate>
+          {WEEK_DAYS[dayData.date.weekDay]} {dayData.date.day}.
+          {dayData.date.month}.
+        </ForecastDate>
+        <ForecastIcon>
+          <i className={dayData.icon}></i>
+        </ForecastIcon>
+        <ForecastTemp>{Math.round(dayData.temp)} °C</ForecastTemp>
+      </ForecastDayWrapper>
+    ))}
+  </ForecastWrapper>
+);
 
 export default Forecast;

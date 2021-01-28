@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Weather } from "../Weather";
+import QuickOptions from "../QuickOptions/QuickOptions";
+import Weather from "../Weather";
 import Forecast from "../Forecast";
 import getWeatherIcon from "../../services/helpers";
-import { API_URL, API_KEY, CITIES } from "../../services/consts";
-import "./index.scss";
+import { API_URL, API_KEY } from "../../services/consts";
 
 const StyledDisplayCard = styled.div`
   margin: 10px auto 30px auto;
@@ -16,7 +16,7 @@ const StyledDisplayCard = styled.div`
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
 `;
 
-export class Menu extends React.Component {
+class WeatherCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,17 +112,7 @@ export class Menu extends React.Component {
     const { weatherData, forecastData } = this.state;
     return (
       <div>
-        <div className="button-group">
-          {CITIES.map((city) => (
-            <button
-              className="button city"
-              key={city.name}
-              onClick={() => this.onClickHandler(city)}
-            >
-              {city.name}
-            </button>
-          ))}
-        </div>
+        <QuickOptions onClick={this.onClickHandler} />
         {weatherData?.temp && (
           <StyledDisplayCard>
             <Weather weatherData={weatherData} />
@@ -135,3 +125,5 @@ export class Menu extends React.Component {
     );
   }
 }
+
+export default WeatherCard;

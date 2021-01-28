@@ -68,7 +68,7 @@ const StyledWeatherSectionTempDescription = styled.div`
   line-height: 1;
 `;
 
-export const Weather = ({ weatherData }) => {
+const Weather = ({ weatherData }) => {
   return (
     <StyledWeatherWrapper id="weather">
       <StyledWeatherCityTitle>{weatherData.name}</StyledWeatherCityTitle>
@@ -105,3 +105,5 @@ export const Weather = ({ weatherData }) => {
     </StyledWeatherWrapper>
   );
 };
+
+export default Weather;
