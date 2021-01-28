@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.scss";
 import { Weather } from "../Weather";
 import getWeatherIcon from "../../services/helpers";
 
