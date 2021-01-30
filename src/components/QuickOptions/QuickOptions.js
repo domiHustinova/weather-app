@@ -44,10 +44,10 @@ const QuickOptionsButton = styled.button`
   }
 `;
 
-const QuickOptions = ({ onClick }) => (
+const QuickOptions = ({ callback }) => (
   <QuickOptionsWrapper>
     {CITIES.map((city) => (
-      <QuickOptionsButton key={city.name} onClick={() => onClick(city)}>
+      <QuickOptionsButton key={city.name} onClick={() => callback(city)}>
         {city.name}
       </QuickOptionsButton>
     ))}
