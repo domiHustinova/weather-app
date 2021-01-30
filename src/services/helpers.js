@@ -8,6 +8,26 @@ export const getDate = (time) => {
   };
 };
 
+export const getForecastData = (data) => {
+  const groups = data.reduce((groups, forecast) => {
+    const date = forecast.date.day;
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(forecast);
+
+    return groups;
+  }, {});
+
+  const temps = Object.keys(groups).map((day) => {
+    return groups[day].reduce(function (prev, current) {
+      return current.temp > prev.temp ? current : prev;
+    });
+  });
+
+  return temps.slice(1, -1);
+};
+
 // Based on Gist by Tim Branyent:
 // https://gist.github.com/tbranyen/62d974681dea8ee0caa1
 
