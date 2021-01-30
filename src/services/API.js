@@ -1,17 +1,19 @@
 import { API_URL, API_KEY } from "./consts";
-import { getDate, getWeatherIcon } from "./helpers";
+import { getDate, getTime, getWeatherIcon } from "./helpers";
 
 export const fetchWeatherData = async (city) => {
   const endpoint = `${API_URL}weather?APPID=${API_KEY}&q=${city.name}&units=metric&lang=SK`;
   const data = await (await fetch(endpoint)).json();
   return {
     name: data.name,
-    temp: data.main.temp,
+    temp: Math.round(data.main.temp),
     description: data.weather[0].description,
     id: data.weather[0].id,
     icon: data.weather[0].icon,
     humidity: data.main.humidity,
-    speed: data.wind.speed,
+    speed: Number.parseFloat(data.wind.speed).toFixed(1),
+    sunrise: getTime(data.sys.sunrise),
+    sunset: getTime(data.sys.sunset),
   };
 };
 

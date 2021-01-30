@@ -8,6 +8,16 @@ export const getDate = (time) => {
   };
 };
 
+export const getTime = (timeUnix) => {
+  let time = new Date(timeUnix * 1000);
+  console.log(time);
+
+  return {
+    hours: ("0" + time.getHours()).slice(-2),
+    minutes: ("0" + time.getMinutes()).slice(-2),
+  };
+};
+
 export const getForecastData = (data) => {
   const groups = data.reduce((groups, forecast) => {
     const date = forecast.date.day;

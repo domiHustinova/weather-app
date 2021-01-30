@@ -23,7 +23,7 @@ const StyledWeatherInnerTopWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledWeatherInnerBottomWrapper = styled.div`
+const StyledWeatherInnerWrapper = styled.div`
   display: flex;
   margin-top: 30px;
 `;
@@ -77,7 +77,7 @@ const Weather = ({ weatherData }) => {
       <StyledWeatherInnerTopWrapper>
         <StyledWeatherSection>
           <StyledWeatherSectionTempValue>
-            {Math.round(weatherData.temp)}
+            {weatherData.temp}
           </StyledWeatherSectionTempValue>
           <StyledWeatherSectionTempUnit>°C</StyledWeatherSectionTempUnit>
           <StyledWeatherSectionTempDescription>
@@ -89,7 +89,7 @@ const Weather = ({ weatherData }) => {
         </StyledWeatherIconSection>
       </StyledWeatherInnerTopWrapper>
 
-      <StyledWeatherInnerBottomWrapper>
+      <StyledWeatherInnerWrapper>
         <StyledWeatherSection>
           <StyledWeatherSectionTitle>Vietor</StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
@@ -102,7 +102,26 @@ const Weather = ({ weatherData }) => {
             <span>{weatherData.humidity}</span> %
           </StyledWeatherSectionValue>
         </StyledWeatherSection>
-      </StyledWeatherInnerBottomWrapper>
+      </StyledWeatherInnerWrapper>
+
+      <StyledWeatherInnerWrapper>
+        <StyledWeatherSection>
+          <StyledWeatherSectionTitle>Východ slnka</StyledWeatherSectionTitle>
+          <StyledWeatherSectionValue>
+            <span>
+              {weatherData.sunrise.hours}:{weatherData.sunrise.minutes}
+            </span>
+          </StyledWeatherSectionValue>
+        </StyledWeatherSection>
+        <StyledWeatherSection>
+          <StyledWeatherSectionTitle>Západ slnka</StyledWeatherSectionTitle>
+          <StyledWeatherSectionValue>
+            <span>
+              {weatherData.sunset.hours}:{weatherData.sunset.minutes}
+            </span>
+          </StyledWeatherSectionValue>
+        </StyledWeatherSection>
+      </StyledWeatherInnerWrapper>
     </StyledWeatherWrapper>
   );
 };
