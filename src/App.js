@@ -8,7 +8,7 @@ import Weather from "./components/Weather/Weather";
 import Forecast from "./components/Forecast/Forecast";
 
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "./theme/consts";
+import { lightTheme, darkTheme } from "./theme/consts";
 import GlobalStyle from "./theme/GlobalStyle";
 
 const StyledDisplayCard = styled.div`
@@ -21,6 +21,7 @@ const StyledDisplayCard = styled.div`
 `;
 
 const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showWeatherCard, setShowWeatherCard] = useState(false);
   const [weatherData, setWeatherData] = useState({});
@@ -38,12 +39,20 @@ const App = () => {
     setLoading(false);
   };
 
+  const handleThemeChange = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <>
         <GlobalStyle />
         <h1>Počasie</h1>
-        <QuickOptions callback={displayWeather} />
+        <QuickOptions
+          displayWeather={displayWeather}
+          handleThemeChange={handleThemeChange}
+          isDarkTheme={isDarkTheme}
+        />
         {!loading && showWeatherCard && (
           <StyledDisplayCard>
             <Weather weatherData={weatherData} />

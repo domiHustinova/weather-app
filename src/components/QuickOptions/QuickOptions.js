@@ -44,13 +44,19 @@ const QuickOptionsButton = styled.button`
   }
 `;
 
-const QuickOptions = ({ callback }) => (
+const QuickOptions = ({ displayWeather, handleThemeChange, isDarkTheme }) => (
   <QuickOptionsWrapper>
+    <QuickOptionsButton>
+      <i className="fas fa-map-marker-alt"></i>
+    </QuickOptionsButton>
     {CITIES.map((city) => (
-      <QuickOptionsButton key={city.name} onClick={() => callback(city)}>
+      <QuickOptionsButton key={city.name} onClick={() => displayWeather(city)}>
         {city.name}
       </QuickOptionsButton>
     ))}
+    <QuickOptionsButton onClick={handleThemeChange}>
+      <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
+    </QuickOptionsButton>
   </QuickOptionsWrapper>
 );
 

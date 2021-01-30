@@ -14,7 +14,7 @@ const GRADIENT_TOP_LIGHT = "linear-gradient(to top, #ff3e78, #777bf0)";
 const GRADIENT_TOP_DARK = "linear-gradient(to top, #ff3e78, #453df8)";
 const GRADIENT_BOTTOM_DARK = "linear-gradient(to bottom, #ff3e78, #ffbd2e)";
 
-export const lightTheme = {
+const COMMON_COLORS = {
   backgroundForecast: WHITE,
   backgroundForecastHover: LIGHT_YELLOW,
   textForecast: DARK_GRAY,
@@ -33,4 +33,12 @@ export const lightTheme = {
   weatherCardBorder: SHADOW_LIGHT,
   weatherCardShadow: SHADOW_DARK,
   text: WHITE,
+};
+
+export const lightTheme = {
+  ...COMMON_COLORS,
+};
+
+export const darkTheme = {
+  ...COMMON_COLORS,
 };

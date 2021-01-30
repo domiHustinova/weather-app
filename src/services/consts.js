@@ -13,7 +13,6 @@ export const WEEK_DAYS = [
 ];
 
 export const CITIES = [
-  { name: "Brno", code: "cz" },
   { name: "Praha", code: "cz" },
   { name: "Barcelona", code: "es" },
   { name: "Bratislava", code: "sk" },
