@@ -5,6 +5,7 @@ Initially, I created this Weather App in JavaScript as a homework for Czechitas 
 I've decided to recreate this app using [Create React App](https://github.com/facebook/create-react-app) and [styled components](https://www.styled-components.com/). The Weather App is not finished, following functionalities are on my to-do list:
 
 - fix forecast functionality
+- add info about sunrise and sunset
 - add dark theme
 - add language selector
 - add unit selector
