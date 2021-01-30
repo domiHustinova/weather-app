@@ -42,7 +42,7 @@ const App = () => {
     <ThemeProvider theme={lightTheme}>
       <>
         <GlobalStyle />
-        <h1>Počasí</h1>
+        <h1>Počasie</h1>
         <QuickOptions callback={displayWeather} />
         {!loading && showWeatherCard && (
           <StyledDisplayCard>

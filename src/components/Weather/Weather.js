@@ -91,13 +91,13 @@ const Weather = ({ weatherData }) => {
 
       <StyledWeatherInnerBottomWrapper>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Vítr</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>Vietor</StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>{weatherData.speed}</span> km/h
           </StyledWeatherSectionValue>
         </StyledWeatherSection>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Vlhkost</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>Vlhkosť</StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>{weatherData.humidity}</span> %
           </StyledWeatherSectionValue>

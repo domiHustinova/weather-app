@@ -2,7 +2,7 @@ import { API_URL, API_KEY } from "./consts";
 import { getDate, getWeatherIcon } from "./helpers";
 
 export const fetchWeatherData = async (city) => {
-  const endpoint = `${API_URL}weather?APPID=${API_KEY}&q=${city.name},${city.code}&units=metric&lang=CZ`;
+  const endpoint = `${API_URL}weather?APPID=${API_KEY}&q=${city.name}&units=metric&lang=SK`;
   const data = await (await fetch(endpoint)).json();
   return {
     name: data.name,
@@ -16,7 +16,7 @@ export const fetchWeatherData = async (city) => {
 };
 
 export const fetchForecastData = async (city) => {
-  const endpoint = `${API_URL}forecast?APPID=${API_KEY}&q=${city.name},${city.code}&units=metric&lang=CZ`;
+  const endpoint = `${API_URL}forecast?APPID=${API_KEY}&q=${city.name}&units=metric&lang=SK`;
   const data = await (await fetch(endpoint)).json();
   return data.list.map((forecastDays) => {
     return {
