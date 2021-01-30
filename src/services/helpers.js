@@ -1,7 +1,17 @@
+export const getDate = (time) => {
+  let date = new Date(time * 1000);
+
+  return {
+    weekDay: date.getDay(),
+    day: date.getDate(),
+    month: date.getMonth() + 1,
+  };
+};
+
 // Based on Gist by Tim Branyent:
 // https://gist.github.com/tbranyen/62d974681dea8ee0caa1
 
-export default function getWeatherIcon(code, img) {
+export const getWeatherIcon = (code, img) => {
   let prefix = "wi wi-";
   let partOfDay = "";
   let icon = weatherIcons[code].icon;
@@ -19,7 +29,7 @@ export default function getWeatherIcon(code, img) {
 
   // Put everything together and return it
   return `${prefix + icon}`;
-}
+};
 
 // mapping of City Icons (https://github.com/erikflowers/weather-icons)
 // to OpenWeatherMap weather codes

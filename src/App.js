@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "./theme/consts";
 import GlobalStyle from "./theme/GlobalStyle";
-import WeatherCard from "./components/WeatherCard";
+import WeatherCard from "./components/WeatherCard/WeatherCard";
 
 function App() {
   return (

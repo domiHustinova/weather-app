@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import getWeatherIcon from "../../services/helpers";
+import { getWeatherIcon } from "../../services/helpers";
 import "./css/weather-icons.min.css";
 
 const StyledWeatherWrapper = styled.div`

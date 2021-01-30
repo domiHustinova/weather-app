@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import QuickOptions from "../QuickOptions/QuickOptions";
-import Weather from "../Weather";
-import Forecast from "../Forecast";
-import getWeatherIcon from "../../services/helpers";
+import Weather from "../Weather/Weather";
+import Forecast from "../Forecast/Forecast";
+import { getDate, getWeatherIcon } from "../../services/helpers";
 import { API_URL, API_KEY } from "../../services/consts";
 
 const StyledDisplayCard = styled.div`
@@ -67,7 +67,7 @@ class WeatherCard extends React.Component {
         const forecastData = dataReceived.list.map((forecastDays) => {
           return {
             temp: Math.round(forecastDays.main.temp),
-            date: this.getDate(forecastDays.dt),
+            date: getDate(forecastDays.dt),
             icon: getWeatherIcon(
               forecastDays.weather[0].id,
               forecastDays.weather[0].icon
@@ -77,16 +77,6 @@ class WeatherCard extends React.Component {
         this.getForecastData(forecastData);
       });
   }
-
-  getDate = (time) => {
-    let date = new Date(time * 1000);
-
-    return {
-      weekDay: date.getDay(),
-      day: date.getDate(),
-      month: date.getMonth() + 1,
-    };
-  };
 
   getForecastData(data) {
     const groups = data.reduce((groups, forecast) => {
