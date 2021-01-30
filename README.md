@@ -11,3 +11,4 @@ I've decided to recreate this app using [Create React App](https://github.com/fa
 - add geolocation using [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - add color change based on the current temperature
 - add input field to select own city
+- migrate the app to TypeScript
