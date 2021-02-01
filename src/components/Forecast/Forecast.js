@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { WEEK_DAYS } from "../../services/consts";
 
 const ForecastWrapper = styled.div`
@@ -35,21 +36,23 @@ const ForecastTemp = styled.div`
   text-align: right;
 `;
 
-const Forecast = ({ forecastData }) => (
-  <ForecastWrapper id="forecast">
-    {forecastData.map((dayData) => (
-      <ForecastDayWrapper>
-        <ForecastDate>
-          {WEEK_DAYS[dayData.date.weekDay]} {dayData.date.day}.
-          {dayData.date.month}.
-        </ForecastDate>
-        <ForecastIcon>
-          <i className={dayData.icon}></i>
-        </ForecastIcon>
-        <ForecastTemp>{Math.round(dayData.temp)} °C</ForecastTemp>
-      </ForecastDayWrapper>
-    ))}
-  </ForecastWrapper>
-);
-
+const Forecast = ({ forecastData }) => {
+  const { t } = useTranslation();
+  return (
+    <ForecastWrapper id="forecast">
+      {forecastData.map((dayData) => (
+        <ForecastDayWrapper>
+          <ForecastDate>
+            {t(WEEK_DAYS[dayData.date.weekDay])} {dayData.date.day}.
+            {dayData.date.month}.
+          </ForecastDate>
+          <ForecastIcon>
+            <i className={dayData.icon}></i>
+          </ForecastIcon>
+          <ForecastTemp>{Math.round(dayData.temp)} °C</ForecastTemp>
+        </ForecastDayWrapper>
+      ))}
+    </ForecastWrapper>
+  );
+};
 export default Forecast;

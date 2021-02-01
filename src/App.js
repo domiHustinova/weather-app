@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import { fetchWeatherData, fetchForecastData } from "./services/API";
 import { getForecastData } from "./services/helpers";
 
@@ -21,6 +23,7 @@ const StyledDisplayCard = styled.div`
 `;
 
 const App = () => {
+  const { t } = useTranslation();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showWeatherCard, setShowWeatherCard] = useState(false);
@@ -47,7 +50,7 @@ const App = () => {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <>
         <GlobalStyle />
-        <h1>Počasie</h1>
+        <h1>{t("title")}</h1>
         <QuickOptions
           displayWeather={displayWeather}
           handleThemeChange={handleThemeChange}

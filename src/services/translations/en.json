@@ -1,0 +1,17 @@
+{
+  "title": "Weather",
+  "weather.wind": "Wind",
+  "weather.humidity": "Humidity",
+  "weather.sunrise": "Sunrise",
+  "weather.sunset": "Sunset",
+  "quick_options.city.prague": "Prague",
+  "quick_options.city.barcelona": "Barcelona",
+  "quick_options.city.paris": "Paris",
+  "week_day.monday": "Monday",
+  "week_day.tuesday": "Tuesday",
+  "week_day.wednesday": "Wednesday",
+  "week_day.thursday": "Thursday",
+  "week_day.friday": "Friday",
+  "week_day.saturday": "Saturday",
+  "week_day.sunday": "Sunday"
+}

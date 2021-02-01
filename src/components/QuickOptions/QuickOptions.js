@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import { CITIES } from "../../services/consts";
 
 const QuickOptionsWrapper = styled.div`
@@ -44,20 +46,26 @@ const QuickOptionsButton = styled.button`
   }
 `;
 
-const QuickOptions = ({ displayWeather, handleThemeChange, isDarkTheme }) => (
-  <QuickOptionsWrapper>
-    <QuickOptionsButton>
-      <i className="fas fa-map-marker-alt"></i>
-    </QuickOptionsButton>
-    {CITIES.map((city) => (
-      <QuickOptionsButton key={city.name} onClick={() => displayWeather(city)}>
-        {city.name}
+const QuickOptions = ({ displayWeather, handleThemeChange, isDarkTheme }) => {
+  const { t } = useTranslation();
+  return (
+    <QuickOptionsWrapper>
+      <QuickOptionsButton>
+        <i className="fas fa-map-marker-alt"></i>
       </QuickOptionsButton>
-    ))}
-    <QuickOptionsButton onClick={handleThemeChange}>
-      <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
-    </QuickOptionsButton>
-  </QuickOptionsWrapper>
-);
+      {CITIES.map((city) => (
+        <QuickOptionsButton
+          key={t(city.name)}
+          onClick={() => displayWeather(city)}
+        >
+          {t(city.title)}
+        </QuickOptionsButton>
+      ))}
+      <QuickOptionsButton onClick={handleThemeChange}>
+        <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
+      </QuickOptionsButton>
+    </QuickOptionsWrapper>
+  );
+};
 
 export default QuickOptions;

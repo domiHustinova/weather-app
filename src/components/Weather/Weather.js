@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import { getWeatherIcon } from "../../services/helpers";
 import "./css/weather-icons.min.css";
 
@@ -70,6 +72,7 @@ const StyledWeatherSectionTempDescription = styled.div`
 `;
 
 const Weather = ({ weatherData }) => {
+  const { t } = useTranslation();
   return (
     <StyledWeatherWrapper id="weather">
       <StyledWeatherCityTitle>{weatherData.name}</StyledWeatherCityTitle>
@@ -91,13 +94,17 @@ const Weather = ({ weatherData }) => {
 
       <StyledWeatherInnerWrapper>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Vietor</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>
+            {t("weather.wind")}
+          </StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>{weatherData.speed}</span> km/h
           </StyledWeatherSectionValue>
         </StyledWeatherSection>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Vlhkosť</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>
+            {t("weather.humidity")}
+          </StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>{weatherData.humidity}</span> %
           </StyledWeatherSectionValue>
@@ -106,7 +113,9 @@ const Weather = ({ weatherData }) => {
 
       <StyledWeatherInnerWrapper>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Východ slnka</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>
+            {t("weather.sunrise")}
+          </StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>
               {weatherData.sunrise.hours}:{weatherData.sunrise.minutes}
@@ -114,7 +123,9 @@ const Weather = ({ weatherData }) => {
           </StyledWeatherSectionValue>
         </StyledWeatherSection>
         <StyledWeatherSection>
-          <StyledWeatherSectionTitle>Západ slnka</StyledWeatherSectionTitle>
+          <StyledWeatherSectionTitle>
+            {t("weather.sunset")}
+          </StyledWeatherSectionTitle>
           <StyledWeatherSectionValue>
             <span>
               {weatherData.sunset.hours}:{weatherData.sunset.minutes}

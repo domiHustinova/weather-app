@@ -1,0 +1,17 @@
+{
+  "title": "Počasie",
+  "weather.wind": "Vietor",
+  "weather.humidity": "Vlhkosť",
+  "weather.sunrise": "Východ slnka",
+  "weather.sunset": "Západ slnka",
+  "quick_options.city.prague": "Praha",
+  "quick_options.city.barcelona": "Barcelona",
+  "quick_options.city.paris": "Paríž",
+  "week_day.monday": "Pondelok",
+  "week_day.tuesday": "Utorok",
+  "week_day.wednesday": "Streda",
+  "week_day.thursday": "Štvrtok",
+  "week_day.friday": "Piatok",
+  "week_day.saturday": "Sobota",
+  "week_day.sunday": "Nedeľa"
+}
