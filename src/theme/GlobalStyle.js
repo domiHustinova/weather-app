@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import background from "../assets/background.jpg";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -21,7 +22,7 @@ body {
   font-weight: 600;
   margin: 0;
   padding: 1em;
-  background: url(${require(`../assets/background.jpg`)}) top no-repeat;
+  background: url(${background}) top no-repeat;
   background-size: cover;
 }
 
