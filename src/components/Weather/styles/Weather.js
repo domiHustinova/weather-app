@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 
 export const Wrapper = styled.div`
+  width: 350px;
   padding: 20px;
   background: ${({ theme }) => theme.backgroundWeatherGradient};
   color: ${({ theme }) => theme.textWeather};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 
 import { fetchWeatherData, fetchForecastData } from "../services/API";
@@ -10,8 +10,9 @@ import { QuickOptionsContainer } from "./QuickOptions";
 import { WeatherContainer } from "./Weather";
 
 const StyledDisplayCard = styled.div`
+  display: flex;
   margin: 10px auto 30px auto;
-  width: 350px;
+  width: 700px;
   overflow: hidden;
   border-radius: 10px;
   border: 5px solid ${({ theme }) => theme.weatherCardBorder};

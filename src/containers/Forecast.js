@@ -7,7 +7,7 @@ import { WEEK_DAYS } from "../services/consts";
 export function ForecastContainer({ forecastData }) {
   const { t } = useTranslation();
   return (
-    <Forecast.Wrapper id="forecast">
+    <Forecast.Wrapper>
       {forecastData.map((dayData) => (
         <Forecast key={dayData.date.day}>
           <Forecast.Date>

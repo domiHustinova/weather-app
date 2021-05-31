@@ -1,11 +1,15 @@
 import styled from "styled-components/macro";
 
 export const Wrapper = styled.div`
+  width: 350px;
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.backgroundForecast};
 `;
 
 export const DayWrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.borderForecast};
+  height: 100%;
   padding: 15px 30px;
   display: flex;
   align-items: center;
