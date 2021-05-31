@@ -41,7 +41,7 @@ const Forecast = ({ forecastData }) => {
   return (
     <ForecastWrapper id="forecast">
       {forecastData.map((dayData) => (
-        <ForecastDayWrapper>
+        <ForecastDayWrapper key={dayData.date.day}>
           <ForecastDate>
             {t(WEEK_DAYS[dayData.date.weekDay])} {dayData.date.day}.
             {dayData.date.month}.

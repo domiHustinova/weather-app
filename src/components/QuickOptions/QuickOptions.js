@@ -19,8 +19,7 @@ const QuickOptionsButton = styled.button`
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  background: ${({ theme }) => theme.buttonBackground}
-    ${({ theme }) => theme.buttonBackgroundGradientLight};
+  background: ${({ theme }) => theme.buttonBackgroundGradientLight};
   color: ${({ theme }) => theme.buttonText};
   border: 0;
   outline: 0;
@@ -29,8 +28,7 @@ const QuickOptionsButton = styled.button`
   &:hover,
   &:focus,
   &:active {
-    background: ${({ theme }) => theme.buttonBackground}
-      ${({ theme }) => theme.buttonBackgroundGradientDark};
+    background: ${({ theme }) => theme.buttonBackgroundGradientDark};
   }
 
   &:first-child {
@@ -55,7 +53,7 @@ const QuickOptions = ({ displayWeather, handleThemeChange, isDarkTheme }) => {
       </QuickOptionsButton>
       {CITIES.map((city) => (
         <QuickOptionsButton
-          key={t(city.name)}
+          key={city.code}
           onClick={() => displayWeather(city)}
         >
           {t(city.title)}
