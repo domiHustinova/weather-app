@@ -1,68 +1,41 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 
-import { fetchWeatherData, fetchForecastData } from "./services/API";
-import { getForecastData } from "./services/helpers";
-
-import { ForecastContainer } from "./containers/Forecast";
-import { QuickOptionsContainer } from "./containers/QuickOptions";
-import { WeatherContainer } from "./containers/Weather";
-
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme } from "./theme/consts";
 import GlobalStyle from "./theme/GlobalStyle";
 
-const StyledDisplayCard = styled.div`
-  margin: 10px auto 30px auto;
-  width: 350px;
-  overflow: hidden;
-  border-radius: 10px;
-  border: 5px solid ${({ theme }) => theme.weatherCardBorder};
-  box-shadow: 0 3px 15px r ${({ theme }) => theme.weatherCardShadow};
+import { DisplayContainer } from "./containers/Display";
+
+export const ThemeButton = styled.button`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 12px;
+  font-size: 16px;
+  background: ${({ theme }) => theme.buttonBackgroundGradientLight};
+  color: ${({ theme }) => theme.buttonText};
+  border: 1px solid ${({ theme }) => theme.buttonBorder};
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: ${({ theme }) => theme.buttonBackgroundGradientDark};
+  }
 `;
 
 const App = () => {
-  const { t } = useTranslation();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [showWeatherCard, setShowWeatherCard] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
-  const [forecastData, setForecastData] = useState([]);
-
-  const displayWeather = async (city) => {
-    setLoading(true);
-    setShowWeatherCard(true);
-
-    const newWeatherData = await fetchWeatherData(city);
-    const newForecastData = await fetchForecastData(city);
-
-    setWeatherData(newWeatherData);
-    setForecastData(getForecastData(newForecastData));
-    setLoading(false);
-  };
-
-  const handleThemeChange = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <>
-        <GlobalStyle />
-        <h1>{t("title")}</h1>
-        <QuickOptionsContainer
-          displayWeather={displayWeather}
-          handleThemeChange={handleThemeChange}
-          isDarkTheme={isDarkTheme}
-        />
-        {!loading && showWeatherCard && (
-          <StyledDisplayCard>
-            <WeatherContainer weatherData={weatherData} />
-            <ForecastContainer forecastData={forecastData} />
-          </StyledDisplayCard>
-        )}
-      </>
+      <GlobalStyle />
+      <ThemeButton onClick={() => setIsDarkTheme(!isDarkTheme)}>
+        <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
+      </ThemeButton>
+      <DisplayContainer />
     </ThemeProvider>
   );
 };

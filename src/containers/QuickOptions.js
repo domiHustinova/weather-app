@@ -4,11 +4,7 @@ import { useTranslation } from "react-i18next";
 import { QuickOptions } from "../components/";
 import { CITIES } from "../services/consts";
 
-export function QuickOptionsContainer({
-  displayWeather,
-  handleThemeChange,
-  isDarkTheme,
-}) {
+export function QuickOptionsContainer({ displayWeather }) {
   const { t } = useTranslation();
   return (
     <QuickOptions>
@@ -23,9 +19,6 @@ export function QuickOptionsContainer({
           {t(city.title)}
         </QuickOptions.Button>
       ))}
-      <QuickOptions.Button onClick={handleThemeChange}>
-        <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
-      </QuickOptions.Button>
     </QuickOptions>
   );
 }
