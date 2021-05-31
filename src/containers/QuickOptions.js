@@ -29,5 +29,3 @@ export function QuickOptionsContainer({
     </QuickOptions>
   );
 }
-
-export default QuickOptions;

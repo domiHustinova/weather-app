@@ -5,9 +5,9 @@ import { useTranslation } from "react-i18next";
 import { fetchWeatherData, fetchForecastData } from "./services/API";
 import { getForecastData } from "./services/helpers";
 
-import Weather from "./components/Weather/Weather";
 import { ForecastContainer } from "./containers/Forecast";
 import { QuickOptionsContainer } from "./containers/QuickOptions";
+import { WeatherContainer } from "./containers/Weather";
 
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme/consts";
@@ -58,7 +58,7 @@ const App = () => {
         />
         {!loading && showWeatherCard && (
           <StyledDisplayCard>
-            <Weather weatherData={weatherData} />
+            <WeatherContainer weatherData={weatherData} />
             <ForecastContainer forecastData={forecastData} />
           </StyledDisplayCard>
         )}

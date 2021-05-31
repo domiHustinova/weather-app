@@ -1,140 +1,106 @@
 import React from "react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 
-import { getWeatherIcon } from "../../services/helpers";
-import "./css/weather-icons.min.css";
+import {
+  CityTitle,
+  IconSection,
+  InnerTopWrapper,
+  InnerWrapper,
+  Section,
+  SectionTempDescription,
+  SectionTempUnit,
+  SectionTempValue,
+  SectionTitle,
+  SectionValue,
+  Wrapper,
+} from "./styles/Weather";
+import "./styles/css/weather-icons.min.css";
 
-const StyledWeatherWrapper = styled.div`
-  padding: 20px;
-  background: ${({ theme }) => theme.backgroundWeather}
-    ${({ theme }) => theme.backgroundWeatherGradient};
-  color: ${({ theme }) => theme.textWeather};
-`;
+export default function Weather({ children, ...restProps }) {
+  return <Wrapper {...restProps}>{children}</Wrapper>;
+}
 
-const StyledWeatherCityTitle = styled.h2`
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  margin: 0 0 20px 0;
-`;
+Weather.CityTitle = function WeatherCityTitle({ children, ...restProps }) {
+  return <CityTitle {...restProps}>{children}</CityTitle>;
+};
 
-const StyledWeatherInnerTopWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledWeatherInnerWrapper = styled.div`
-  display: flex;
-  margin-top: 30px;
-`;
-
-const StyledWeatherSection = styled.div`
-  flex: 0 0 50%;
-  text-align: center;
-`;
-
-const StyledWeatherIconSection = styled(StyledWeatherSection)`
-  font-size: 64px;
-`;
-
-const StyledWeatherSectionTitle = styled.h3`
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  padding: 0 0 5px 0;
-  margin: 0 0 5px 0;
-`;
-
-const StyledWeatherSectionValue = styled.div`
-  font-size: 18px;
-  text-align: center;
-  font-weight: 600;
-`;
-
-const StyledWeatherSectionTempValue = styled.span`
-  font-size: 64px;
-  font-weight: 800;
-  line-height: 1;
-`;
-
-const StyledWeatherSectionTempUnit = styled(StyledWeatherSectionTempValue)`
-  font-size: 24px;
-`;
-
-const StyledWeatherSectionTempDescription = styled.div`
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-`;
-
-const Weather = ({ weatherData }) => {
-  const { t } = useTranslation();
+Weather.IconSection = function WeatherIconSection({ icon, ...restProps }) {
   return (
-    <StyledWeatherWrapper id="weather">
-      <StyledWeatherCityTitle>{weatherData.name}</StyledWeatherCityTitle>
-
-      <StyledWeatherInnerTopWrapper>
-        <StyledWeatherSection>
-          <StyledWeatherSectionTempValue>
-            {weatherData.temp}
-          </StyledWeatherSectionTempValue>
-          <StyledWeatherSectionTempUnit>°C</StyledWeatherSectionTempUnit>
-          <StyledWeatherSectionTempDescription>
-            {weatherData.description}
-          </StyledWeatherSectionTempDescription>
-        </StyledWeatherSection>
-        <StyledWeatherIconSection>
-          <i className={getWeatherIcon(weatherData.id, weatherData.icon)}></i>
-        </StyledWeatherIconSection>
-      </StyledWeatherInnerTopWrapper>
-
-      <StyledWeatherInnerWrapper>
-        <StyledWeatherSection>
-          <StyledWeatherSectionTitle>
-            {t("weather.wind")}
-          </StyledWeatherSectionTitle>
-          <StyledWeatherSectionValue>
-            <span>{weatherData.speed}</span> km/h
-          </StyledWeatherSectionValue>
-        </StyledWeatherSection>
-        <StyledWeatherSection>
-          <StyledWeatherSectionTitle>
-            {t("weather.humidity")}
-          </StyledWeatherSectionTitle>
-          <StyledWeatherSectionValue>
-            <span>{weatherData.humidity}</span> %
-          </StyledWeatherSectionValue>
-        </StyledWeatherSection>
-      </StyledWeatherInnerWrapper>
-
-      <StyledWeatherInnerWrapper>
-        <StyledWeatherSection>
-          <StyledWeatherSectionTitle>
-            {t("weather.sunrise")}
-          </StyledWeatherSectionTitle>
-          <StyledWeatherSectionValue>
-            <span>
-              {weatherData.sunrise.hours}:{weatherData.sunrise.minutes}
-            </span>
-          </StyledWeatherSectionValue>
-        </StyledWeatherSection>
-        <StyledWeatherSection>
-          <StyledWeatherSectionTitle>
-            {t("weather.sunset")}
-          </StyledWeatherSectionTitle>
-          <StyledWeatherSectionValue>
-            <span>
-              {weatherData.sunset.hours}:{weatherData.sunset.minutes}
-            </span>
-          </StyledWeatherSectionValue>
-        </StyledWeatherSection>
-      </StyledWeatherInnerWrapper>
-    </StyledWeatherWrapper>
+    <IconSection {...restProps}>
+      <i className={icon}></i>
+    </IconSection>
   );
 };
 
-export default Weather;
+Weather.InnerTopWrapper = function WeatherInnerTopWrapper({
+  children,
+  ...restProps
+}) {
+  return <InnerTopWrapper {...restProps}>{children}</InnerTopWrapper>;
+};
+
+Weather.InnerWrapper = function WeatherInnerWrapper({
+  children,
+  ...restProps
+}) {
+  return <InnerWrapper {...restProps}>{children}</InnerWrapper>;
+};
+
+Weather.Section = function WeatherSection({ children, ...restProps }) {
+  return <Section {...restProps}>{children}</Section>;
+};
+
+Weather.SectionTempDescription = function WeatherSectionTempDescription({
+  children,
+  ...restProps
+}) {
+  return (
+    <SectionTempDescription {...restProps}>{children}</SectionTempDescription>
+  );
+};
+
+Weather.SectionTempUnit = function WeatherSectionTempUnit({
+  children,
+  ...restProps
+}) {
+  return <SectionTempUnit {...restProps}>{children}</SectionTempUnit>;
+};
+
+Weather.SectionTempValue = function WeatherSectionTempValueSectionTempValue({
+  children,
+  ...restProps
+}) {
+  return <SectionTempValue {...restProps}>{children}</SectionTempValue>;
+};
+
+Weather.SectionTitle = function WeatherSectionTitle({
+  children,
+  ...restProps
+}) {
+  return <SectionTitle {...restProps}>{children}</SectionTitle>;
+};
+
+Weather.SectionValue = function WeatherSectionValue({
+  times,
+  speed,
+  humidity,
+}) {
+  return (
+    <SectionValue>
+      {times && (
+        <span>
+          {times.hours}:{times.minutes}
+        </span>
+      )}
+      {speed && (
+        <>
+          <span>{speed}</span> km/h
+        </>
+      )}
+      {humidity && (
+        <>
+          <span>{humidity}</span> %
+        </>
+      )}
+    </SectionValue>
+  );
+};
