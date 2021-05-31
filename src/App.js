@@ -7,7 +7,7 @@ import { getForecastData } from "./services/helpers";
 
 import QuickOptions from "./components/QuickOptions/QuickOptions";
 import Weather from "./components/Weather/Weather";
-import Forecast from "./components/Forecast/Forecast";
+import { ForecastContainer } from "./containers/Forecast";
 
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme/consts";
@@ -59,7 +59,7 @@ const App = () => {
         {!loading && showWeatherCard && (
           <StyledDisplayCard>
             <Weather weatherData={weatherData} />
-            <Forecast forecastData={forecastData} />
+            <ForecastContainer forecastData={forecastData} />
           </StyledDisplayCard>
         )}
       </>
