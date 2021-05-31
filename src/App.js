@@ -5,9 +5,9 @@ import { useTranslation } from "react-i18next";
 import { fetchWeatherData, fetchForecastData } from "./services/API";
 import { getForecastData } from "./services/helpers";
 
-import QuickOptions from "./components/QuickOptions/QuickOptions";
 import Weather from "./components/Weather/Weather";
 import { ForecastContainer } from "./containers/Forecast";
+import { QuickOptionsContainer } from "./containers/QuickOptions";
 
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme/consts";
@@ -51,7 +51,7 @@ const App = () => {
       <>
         <GlobalStyle />
         <h1>{t("title")}</h1>
-        <QuickOptions
+        <QuickOptionsContainer
           displayWeather={displayWeather}
           handleThemeChange={handleThemeChange}
           isDarkTheme={isDarkTheme}
