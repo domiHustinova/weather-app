@@ -17,3 +17,8 @@ export const CITIES = [
   { title: "quick_options.city.barcelona", value: "Barcelona", code: "es" },
   { title: "quick_options.city.paris", value: "Paris", code: "fr" },
 ];
+
+export const LANGUAGES = [
+  { title: "English", value: "EN", code: "en" },
+  { title: "Slovenčina", value: "SK", code: "sk" },
+];

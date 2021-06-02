@@ -1,42 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme } from "./theme/consts";
 import GlobalStyle from "./theme/GlobalStyle";
+import { Button, Wrapper } from "./components/QuickOptions/styles/QuickOptions";
 
 import { DisplayContainer } from "./containers/Display";
 
-export const ThemeButton = styled.button`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 10px 12px;
-  font-size: 16px;
-  background: ${({ theme }) => theme.buttonBackgroundGradientLight};
-  color: ${({ theme }) => theme.buttonText};
-  border: 1px solid ${({ theme }) => theme.buttonBorder};
-  border-radius: 5px;
-  outline: 0;
-  cursor: pointer;
+import { LANGUAGES } from "./services/consts";
 
-  &:hover,
-  &:focus,
-  &:active {
-    background: ${({ theme }) => theme.buttonBackgroundGradientDark};
-  }
+const ButtonGroup = styled(Wrapper)`
+  max-width: 150px;
+  margin: 0;
+`;
+
+const OptionButton = styled(Button)`
+  padding: 10px 12px;
+  background: ${(props) =>
+    props.selected
+      ? props.theme.buttonBackgroundGradientDark
+      : props.theme.buttonBackgroundGradientLight};
 `;
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [language, setLanguage] = useState(
+    window.localStorage.getItem("language") || "en"
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem("language", language);
+    i18n.changeLanguage(language);
+  }, [language]);
+
+  const { i18n } = useTranslation();
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <ThemeButton onClick={() => setIsDarkTheme(!isDarkTheme)}>
-        <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
-      </ThemeButton>
+      <ButtonGroup>
+        <OptionButton onClick={() => setIsDarkTheme(!isDarkTheme)}>
+          <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
+        </OptionButton>
+        {LANGUAGES.map((lang) => (
+          <OptionButton
+            title={lang.title}
+            key={lang.code}
+            selected={language === lang.code}
+            onClick={() => setLanguage(lang.code)}
+          >
+            {lang.value}
+          </OptionButton>
+        ))}
+      </ButtonGroup>
       <DisplayContainer />
     </ThemeProvider>
   );
 };
+
 export default App;

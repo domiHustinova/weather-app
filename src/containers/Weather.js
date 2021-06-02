@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 import { Weather } from "../components/";
 import { getWeatherIcon } from "../services/helpers";
 
-export function WeatherContainer({ weatherData }) {
+export function WeatherContainer({ city, weatherData }) {
   const { t } = useTranslation();
   return (
     <Weather>
-      <Weather.CityTitle>{weatherData.name}</Weather.CityTitle>
+      <Weather.CityTitle>{t(city.title) || weatherData.name}</Weather.CityTitle>
 
       <Weather.InnerTopWrapper>
         <Weather.Section>
@@ -16,9 +16,6 @@ export function WeatherContainer({ weatherData }) {
             {weatherData.temp}
           </Weather.SectionTempValue>
           <Weather.SectionTempUnit>°C</Weather.SectionTempUnit>
-          <Weather.SectionTempDescription>
-            {weatherData.description}
-          </Weather.SectionTempDescription>
         </Weather.Section>
         <Weather.IconSection
           icon={getWeatherIcon(weatherData.id, weatherData.icon)}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
@@ -9,6 +9,8 @@ import { useForecastApi } from "../services/useForecastApi";
 import { ForecastContainer } from "./Forecast";
 import { QuickOptionsContainer } from "./QuickOptions";
 import { WeatherContainer } from "./Weather";
+
+import { CITIES } from "../services/consts";
 
 const StyledDisplayCard = styled.div`
   display: flex;
@@ -21,6 +23,7 @@ const StyledDisplayCard = styled.div`
 `;
 
 export function DisplayContainer() {
+  const [city, setCity] = useState(CITIES[0]);
   const { t } = useTranslation();
 
   const [
@@ -32,15 +35,15 @@ export function DisplayContainer() {
     doForecastFetch,
   ] = useForecastApi();
 
-  const doFetch = (city) => {
+  useEffect(() => {
     doWeatherFetch(city);
     doForecastFetch(city);
-  };
+  }, [city]);
 
   return (
     <>
       <h1>{t("title")}</h1>
-      <QuickOptionsContainer doFetch={doFetch} />
+      <QuickOptionsContainer setCity={setCity} />
 
       {(isErrorForecast || isErrorWeather) && (
         <div>Something went wrong ...</div>
@@ -49,7 +52,7 @@ export function DisplayContainer() {
       {/* {(isLoadingWeatherData || isLoadingForecastData) && <div>Loading...</div>} */}
       {weatherData && forecastData && (
         <StyledDisplayCard>
-          <WeatherContainer weatherData={weatherData} />
+          <WeatherContainer city={city} weatherData={weatherData} />
           <ForecastContainer forecastData={forecastData} />
         </StyledDisplayCard>
       )}
