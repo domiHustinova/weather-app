@@ -6,7 +6,7 @@ I've decided to recreate this app using [Create React App](https://github.com/fa
 
 - fix forecast functionality
 - add dark theme
-- add language selector
+- ~~add language selector~~ ✅
 - add unit selector
 - add geolocation using [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - add color change based on the current temperature
