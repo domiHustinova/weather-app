@@ -19,11 +19,17 @@ export function useForecastApi() {
       setIsErrorForecast(false);
       setIsLoadingForecastData(true);
 
+      let query = "";
+
+      if (city?.lat && city?.lng) {
+        query = `lat=${city.lat}&lon=${city.lng}`;
+      } else {
+        query = `q=${city.value}`;
+      }
+
       try {
-        const queryUrl = `${API_URL}forecast?APPID=${API_KEY}&q=${city.value}&units=metric&lang=EN`;
-
+        const queryUrl = `${API_URL}forecast?APPID=${API_KEY}&${query}&units=metric&lang=EN`;
         const response = await axios(queryUrl);
-
         const newForecastData = response.data.list.map((forecastDays) => {
           return {
             temp: Math.round(forecastDays.main.temp),

@@ -6,6 +6,7 @@ import { getWeatherIcon } from "../services/helpers";
 
 export function WeatherContainer({ city, weatherData }) {
   const { t } = useTranslation();
+
   return (
     <Weather>
       <Weather.CityTitle>{t(city.title) || weatherData.name}</Weather.CityTitle>

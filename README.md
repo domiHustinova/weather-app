@@ -8,7 +8,7 @@ I've decided to recreate this app using [Create React App](https://github.com/fa
 - add the dark theme
 - ~~add the language selector~~ ✅
 - add the unit selector
-- add the geolocation using [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+- ~~add the geolocation using [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)~~ ✅
 - change colors according to the current temperature
 - add an input field for the city search
 - migrate the app to TypeScript

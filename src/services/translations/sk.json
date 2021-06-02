@@ -1,5 +1,6 @@
 {
   "title": "Počasie",
+  "currentLocation": "Aktuálna poloha",
   "weather.wind": "Vietor",
   "weather.humidity": "Vlhkosť",
   "weather.sunrise": "Východ slnka",

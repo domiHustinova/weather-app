@@ -17,8 +17,16 @@ export function useWeatherApi() {
       setIsErrorWeather(false);
       setIsLoadingWeatherData(true);
 
+      let query = "";
+
+      if (city?.lat && city?.lng) {
+        query = `lat=${city.lat}&lon=${city.lng}`;
+      } else {
+        query = `q=${city.value}`;
+      }
+
       try {
-        const queryUrl = `${API_URL}weather?APPID=${API_KEY}&q=${city.value}&units=metric&lang=EN`;
+        const queryUrl = `${API_URL}weather?APPID=${API_KEY}&${query}&units=metric&lang=EN`;
         const response = await axios(queryUrl);
 
         setWeatherData({

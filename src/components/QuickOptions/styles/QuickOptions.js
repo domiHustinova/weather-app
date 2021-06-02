@@ -15,7 +15,10 @@ export const Button = styled.button`
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  background: ${({ theme }) => theme.buttonBackgroundGradientLight};
+  background: ${(props) =>
+    props.selected
+      ? props.theme.buttonBackgroundGradientDark
+      : props.theme.buttonBackgroundGradientLight};
   color: ${({ theme }) => theme.buttonText};
   border: 0;
   outline: 0;

@@ -1,5 +1,6 @@
 {
   "title": "Weather",
+  "currentLocation": "Current Location",
   "weather.wind": "Wind",
   "weather.humidity": "Humidity",
   "weather.sunrise": "Sunrise",

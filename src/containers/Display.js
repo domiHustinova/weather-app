@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
-
-import { useWeatherApi } from "../services/useWeatherApi";
-import { useForecastApi } from "../services/useForecastApi";
 
 import { ForecastContainer } from "./Forecast";
 import { QuickOptionsContainer } from "./QuickOptions";
 import { WeatherContainer } from "./Weather";
 
+import { useWeatherApi } from "../services/useWeatherApi";
+import { useForecastApi } from "../services/useForecastApi";
 import { CITIES } from "../services/consts";
 
 const StyledDisplayCard = styled.div`
@@ -40,10 +38,32 @@ export function DisplayContainer() {
     doForecastFetch(city);
   }, [city]);
 
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCity({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        () => {
+          console.log("Unable to retrieve your location");
+        }
+      );
+    }
+  };
+
   return (
     <>
       <h1>{t("title")}</h1>
-      <QuickOptionsContainer setCity={setCity} />
+      <QuickOptionsContainer
+        cityData={city}
+        setCity={setCity}
+        getLocation={getLocation}
+      />
 
       {(isErrorForecast || isErrorWeather) && (
         <div>Something went wrong ...</div>
