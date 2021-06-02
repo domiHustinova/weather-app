@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 
-import { fetchWeatherData, fetchForecastData } from "../services/API";
-import { getForecastData } from "../services/helpers";
+import { useWeatherApi } from "../services/useWeatherApi";
+import { useForecastApi } from "../services/useForecastApi";
 
 import { ForecastContainer } from "./Forecast";
 import { QuickOptionsContainer } from "./QuickOptions";
@@ -21,28 +22,32 @@ const StyledDisplayCard = styled.div`
 
 export function DisplayContainer() {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(false);
-  const [showWeatherCard, setShowWeatherCard] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
-  const [forecastData, setForecastData] = useState([]);
 
-  const displayWeather = async (city) => {
-    setLoading(true);
-    setShowWeatherCard(true);
+  const [
+    { weatherData, isLoadingWeatherData, isErrorWeather },
+    doWeatherFetch,
+  ] = useWeatherApi();
+  const [
+    { forecastData, isLoadingForecastData, isErrorForecast },
+    doForecastFetch,
+  ] = useForecastApi();
 
-    const newWeatherData = await fetchWeatherData(city);
-    const newForecastData = await fetchForecastData(city);
-
-    setWeatherData(newWeatherData);
-    setForecastData(getForecastData(newForecastData));
-    setLoading(false);
+  const doFetch = (city) => {
+    doWeatherFetch(city);
+    doForecastFetch(city);
   };
 
   return (
     <>
       <h1>{t("title")}</h1>
-      <QuickOptionsContainer displayWeather={displayWeather} />
-      {!loading && showWeatherCard && (
+      <QuickOptionsContainer doFetch={doFetch} />
+
+      {(isErrorForecast || isErrorWeather) && (
+        <div>Something went wrong ...</div>
+      )}
+
+      {/* {(isLoadingWeatherData || isLoadingForecastData) && <div>Loading...</div>} */}
+      {weatherData && forecastData && (
         <StyledDisplayCard>
           <WeatherContainer weatherData={weatherData} />
           <ForecastContainer forecastData={forecastData} />
