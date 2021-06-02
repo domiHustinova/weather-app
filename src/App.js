@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 import styled, { ThemeProvider } from "styled-components/macro";
 import { lightTheme, darkTheme } from "./theme/consts";
@@ -11,7 +12,7 @@ import { DisplayContainer } from "./containers/Display";
 import { LANGUAGES } from "./services/consts";
 
 const ButtonGroup = styled(Wrapper)`
-  max-width: 150px;
+  max-width: 115px;
   margin: 0;
 `;
 
@@ -28,21 +29,20 @@ const App = () => {
   const [language, setLanguage] = useState(
     window.localStorage.getItem("language") || "en"
   );
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.localStorage.setItem("language", language);
     i18n.changeLanguage(language);
   }, [language]);
 
-  const { i18n } = useTranslation();
-
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <Helmet>
+        <title>{t("title")}</title>
+      </Helmet>
       <GlobalStyle />
       <ButtonGroup>
-        <OptionButton onClick={() => setIsDarkTheme(!isDarkTheme)}>
-          <i className={`fas ${isDarkTheme ? "fa-sun" : "fa-moon"}`}></i>
-        </OptionButton>
         {LANGUAGES.map((lang) => (
           <OptionButton
             title={lang.title}
